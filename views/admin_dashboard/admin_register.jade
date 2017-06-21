@@ -1,0 +1,63 @@
+extends admin_dashboard
+
+block vars
+    - var title = "Admin Register"
+
+block div
+
+    .col-md-9
+        if errors && errors.length > 0
+            .alert.alert-danger.alert-dismissible.fade-in(role="alert")
+                button.close(type="button" data-dismiss="alert" aria-label="Close")
+                    span(aria-hidden="true") ×
+                p= errors
+        if success && success.length > 0
+            .alert.alert-success.alert-dismissible.fade-in(role="alert")
+                button.close(type="button" data-dismiss="alert" aria-label="Close")
+                    span(aria-hidden="true") ×
+                p= success
+        // Latest Users
+        .panel.panel-default
+            .panel-heading.main-color-bg
+                h3.panel-title Register Administrator
+            .panel-body
+                form( method="POST" action="/admins/register")
+                    .input-group
+                        span.input-group-addon First Name
+                        input.form-control(type="text", name="admin_firstname" required="required")
+                    br
+                    br
+                    .input-group
+                        span.input-group-addon Last Name
+                        input.form-control(type="text", name="admin_lastname" required="required")
+                    br
+                    br
+                    .input-group
+                        span.input-group-addon Phone
+                        input.form-control(type="text", name="admin_phone" required="required")
+                    br
+                    br
+                    .input-group
+                        span.input-group-addon Email
+                        input.form-control(type="email", name="admin_email" required="required")
+                    br
+                    br
+
+                    .input-group
+                        span.input-group-addon Username
+                        input.form-control(type="text", name="admin_username" required="required")
+                    br
+                    br
+                    .input-group
+                        span.input-group-addon Password
+                        input.form-control(type="password", name="admin_password" required="required")
+                    br
+                    br
+                    .input-group
+                        span.input-group-addon Role
+                        select.form-control(type="text", name="admin_role")
+                            option super admin
+                            option(selected="selected") admin
+                    br
+                    br
+                    input.btn.pull-right.btn-md.blue(type="submit" value="Register")

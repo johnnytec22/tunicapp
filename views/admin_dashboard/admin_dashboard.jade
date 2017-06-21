@@ -1,0 +1,224 @@
+block vars
+  - var title = 'Dashboard'
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title Admin Area | #{title}
+    // Bootstrap core CSS
+    link(href='../../css/bootstrap.min.css', rel='stylesheet')
+    link(href='../../css/style.css', rel='stylesheet')
+    link(rel="stylesheet", href="../../css/font-awesome.min.css")
+  body
+    nav.navbar.navbar-default
+      .container
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='/') Sitename.com
+        #navbar.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li.active
+              a(href='/admin/admin_dashboard') Dashboard
+            li
+              a(href data-toggle='modal', data-target='#addPage') Add technician
+            li
+              a(href="/admins/register") Register admin
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href='#') Welcome, #{admin.username}
+            li.active
+              a(href='/admin/logout') Logout
+        // /.nav-collapse
+    header#header
+      .container
+        .row
+          .col-md-10
+            h2
+              span.glyphicon.glyphicon-cog(aria-hidden='true')
+              |  #{title}
+          .col-md-2
+            .dropdown.create
+              button#dropdownMenu1.btn.btn-default.dropdown-toggle(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='true')
+                | Create Content
+                span.caret
+              ul.dropdown-menu(aria-labelledby='dropdownMenu1')
+                li
+                  a(type='button', data-toggle='modal', data-target='#addPage') Technician
+                li
+                  a(href="/admins/register") Administrator
+
+    section#breadcrumb
+      .container
+        ol.breadcrumb
+          li #{title}
+    section#main
+      .container
+        .row
+          .col-md-3
+            .list-group
+              a.list-group-item.active.main-color-bg(href='/admin/admin_dashboard')
+                span.glyphicon.glyphicon-cog(aria-hidden='true')
+                |  Dashboard
+              a.list-group-item(href='/tekers')
+                span.glyphicon.glyphicon-list-alt(aria-hidden='true')
+                |  Technicians 
+                span.badge.blue #{data.tekers_count}
+              a.list-group-item(href='/admins')
+                span.glyphicon.glyphicon-pencil(aria-hidden='true')
+                |  Administrators 
+                span.badge.blue #{data.admins_count}
+              a.list-group-item(href='/users')
+                span.glyphicon.glyphicon-user(aria-hidden='true')
+                |  Users 
+                span.badge.blue #{data.users_count}
+            .well
+              h4 Disk Space Used
+              .progress
+                .progress-bar(role='progressbar', aria-valuenow='60', aria-valuemin='0', aria-valuemax='100', style='width: 60%;')
+                  | 60%
+              h4 Bandwidth Used 
+              .progress
+                .progress-bar(role='progressbar', aria-valuenow='40', aria-valuemin='0', aria-valuemax='100', style='width: 40%;')
+                  | 40%
+          block div
+            .col-md-9
+              if errors && errors.length > 0
+                 .alert.alert-danger.alert-dismissible.fade-in(role="alert")
+                    button.close(type="button" data-dismiss="alert" aria-label="Close")
+                      span(aria-hidden="true") ×
+                    p= errors
+              if success && success.length > 0
+                 .alert.alert-success.alert-dismissible.fade-in(role="alert")
+                    button.close(type="button" data-dismiss="alert" aria-label="Close")
+                      span(aria-hidden="true") ×
+                    p= success
+              // Website Overview
+              .panel.panel-default
+                .panel-heading.main-color-bg
+                  h3.panel-title Website Overview
+                .panel-body
+                  .col-md-3
+                    .well.dash-box
+                      h2
+                        span.glyphicon.glyphicon-user.blue-top(aria-hidden='true')
+                        |  #{data.users_count}
+                      h4 Users
+                  .col-md-3
+                    .well.dash-box
+                      h2
+                        span.glyphicon.glyphicon-list-alt.blue-top(aria-hidden='true')
+                        |  #{data.tekers_count}
+                      h4 Technicians
+                  .col-md-3
+                    .well.dash-box
+                      h2
+                        span.glyphicon.glyphicon-pencil.blue-top(aria-hidden='true')
+                        |  #{data.admins_count}
+                      h4 Administrators
+                  .col-md-3
+                    .well.dash-box
+                      h2
+                        span.glyphicon.glyphicon-stats.blue-top(aria-hidden='true')
+                        |  12,334
+                      h4 Visitors
+              // Latest Users
+              .panel.panel-default
+                .panel-heading.main-color-bg
+                  h3.panel-title Latest Users
+                .panel-body
+                  table.table.table-striped.table-hover.table-bordered
+                    tr
+                      th.text-center Name
+                      th.text-center Email
+                      th.text-center Joined Date
+                    each user in data.latest_users
+                      tr
+                          td.text-center= user.firstname+' '+user.lastname
+                          td.text-center= user.email
+                          td.text-center= user.registered_date.toLocaleDateString()
+    footer#footer(style="margin-top: 330px;")
+      p Copyright Sitename.com, © 2017
+    // Modals
+    // Add Page
+    #addPage.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+      .modal-dialog(role='document')
+        .modal-content
+          form(method="POST" action="/tekers/add" encType="multipart/form-data")
+            .modal-header
+              button.close(type='button', data-dismiss='modal', aria-label='Close')
+                span(aria-hidden='true') ×
+              h4#myModalLabel.modal-title Add Technician
+            .modal-body
+              .form-group
+                label First Name
+                input.form-control(type='text', name="firstname", placeholder='Enter first name')
+              .form-group
+                label Last Name
+                input.form-control(type='text', name="lastname", placeholder='Enter last name')
+              .form-group
+                label Phone
+                input.form-control(type='text', name="phone", placeholder='Enter phone number')
+              .form-group
+                label E-mail
+                input.form-control(type='text', name="email", placeholder='Enter e-mail')
+              .form-group
+                label Town
+                input.form-control(type='text', name="town", placeholder='Enter town')
+              .form-group
+                label City
+                input.form-control(type='text', name="city", placeholder='Enter city')
+              .form-group
+                label Country
+                input.form-control(type='text', name="country", placeholder='Enter country')
+              .form-group
+                label Field(s)
+                .checkbox
+                    label
+                    input(type='checkbox' name='field' ,value='Networking')
+                    |  Networking
+                .checkbox
+                    label
+                    input(type='checkbox' name='field', value='Computer Engineering')
+                    |  Computer Engineering
+                .checkbox
+                    label
+                    input(type='checkbox' name='field', value='Web Development')
+                    |  Web Development
+                .checkbox
+                    label
+                    input(type='checkbox' name='field', value='iOS Development')
+                    |  iOS Development
+                .checkbox
+                    label
+                    input(type='checkbox' name='field', value='Android Development')
+                    |  Android Development
+                .checkbox
+                    label
+                    input(type='checkbox' name='field', value='System Upgrade')
+                    |  System Upgrade
+                .form-group
+                    label Years of experience
+                    input.form-control(type='number', min="1", max="60", name='years_of_experience')
+                .form-group
+                    label Short Message
+                    textarea.form-control(type='text' name='message')
+                .input-group
+                    span.input-group-addon.glyphicon.glyphicon-picture
+                    input.form-control(type='file', name='display_picture')
+
+            .modal-footer
+              button.btn.btn-default(type='button', data-dismiss='modal') Close
+              button.btn.btn-primary(type='submit') Save
+
+    //
+      Bootstrap core JavaScript
+      ==================================================
+    // Placed at the end of the document so the pages load faster
+    script(src='../../js/jquery.min.js')
+    script(src='../../js/bootstrap.min.js')

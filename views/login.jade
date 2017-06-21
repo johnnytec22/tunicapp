@@ -1,0 +1,54 @@
+
+extends base
+
+block vars
+    - var title = "User Login"
+
+block body
+
+    nav.navbar.navbar-default
+        .container
+            .navbar-header
+                a.navbar-brand(href='/') Sitename
+
+    header#header
+        .container
+            .row
+                .col-md-12
+                    h1.text-center(style="font-family:Comfortaa;")
+                        | User Login
+    section(style="font-family:Comfortaa;")#main
+        .container
+            .row
+                br
+                br
+                h3.text-center(style="font-family:Comfortaa;") Welcome, You are one-step away to having your need met, <br/>Please login to your account.
+                br
+                if errors && errors.length > 0
+                    .alert.alert-danger.alert-dismissible.fade-in(role="alert")
+                        button.close(type="button" data-dismiss="alert" aria-label="Close")
+                            span(aria-hidden="true") ×
+                        p= errors
+                if success && success.length > 0
+                    .alert.alert-success.alert-dismissible.fade-in(role="alert")
+                        button.close(type="button" data-dismiss="alert" aria-label="Close")
+                            span(aria-hidden="true") ×
+                        p= success
+                .col-md-4.col-md-offset-4.col-sm-6.col-sm-offset-3.col-xs-12
+                    form#login(method="POST" action="/user/login")
+                        .input-group
+                            span.input-group-addon Username
+                            input.form-control(type='text',name="username")
+                        br
+                        .input-group
+                            span.input-group-addon Password
+                            input.form-control(type='password', name="password" )
+                        br
+                        br
+                        .row
+                            .col-md-6.col-sm-6.col-xs-6
+                                button.btn.btn-default.btn-block(type='submit') Login
+
+                            .col-md-6.col-sm-6.col-xs-6
+                                a(href="/user/register", style="text-decoration: none; color: black")
+                                    button.btn.btn-danger.btn-block(type="button") Register

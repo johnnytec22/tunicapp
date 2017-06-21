@@ -1,0 +1,56 @@
+extends base
+
+block vars
+    - var title = "Admin Login"
+
+block body
+
+        nav.navbar.navbar-default
+            .container
+                .navbar-header
+                    a.navbar-brand(href='/') Sitename
+
+        header#header
+            .container
+                .row
+                    .col-md-12
+                        h1.text-center(style="font-family:Comfortaa;")
+                            | Admin Login
+        section(style="font-family:Comfortaa;")#main
+            .container
+
+                .row
+                    .col-md-4.col-md-offset-4
+                        br
+                        br
+                        h2.text-center Welcome Admin, login to your account.
+                .row
+                    br
+                    .col-md-4.col-md-offset-4
+                        if errors && errors.length > 0
+                            .alert.alert-danger.alert-dismissible.fade-in(role="alert")
+                                button.close(type="button" data-dismiss="alert" aria-label="Close")
+                                    span(aria-hidden="true") ×
+                                p= errors
+                        if success && success.length > 0
+                            .alert.alert-success.alert-dismissible.fade-in(role="alert")
+                                button.close(type="button" data-dismiss="alert" aria-label="Close")
+                                    span(aria-hidden="true") ×
+                                p= success
+                .row
+                    .col-md-4.col-md-offset-4
+                        form#login(method="POST" action="/admin/login")
+                            .input-group
+                                span.input-group-addon Username
+                                input.form-control(type='text',name="username")
+                            br
+                            .input-group
+                                span.input-group-addon Password
+                                input.form-control(type='password', name="password")
+                            br
+                            br
+                            .row
+                                .col-md-6.col-md-offset-3
+                                    input.btn.btn-default.btn-block.main-color-bg(type='submit' value="Login") 
+
+

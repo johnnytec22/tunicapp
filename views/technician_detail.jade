@@ -1,0 +1,23 @@
+extends base
+
+block vars
+    - var title = 'Details'
+
+block body
+    h1 TECHNICIAN DETAILS
+
+    span Name : #{user.firstname} #{user.lastname}
+    br
+    span Phone : #{user.phone}
+    br
+    span Email : #{user.email}
+    br
+    span location : #{user.location.town}, #{user.location.city}
+    br
+    span Country : #{user.location.country}
+    br
+    //span Skills
+    //ul
+        each skill in technician.skills 
+            li = skill
+    

@@ -1,0 +1,146 @@
+extends admin_dashboard.jade
+block vars
+  - var title = 'Edit'
+block div
+            .col-md-9
+                if errors && errors.length > 0
+                    .alert.alert-danger.alert-dismissible.fade-in(role="alert")
+                        button.close(type="button" data-dismiss="alert" aria-label="Close")
+                            span(aria-hidden="true") ×
+                        p= errors
+                if success && success.length > 0
+                    .alert.alert-success.alert-dismissible.fade-in(role="alert")
+                        button.close(type="button" data-dismiss="alert" aria-label="Close")
+                            span(aria-hidden="true") ×
+                        p= success
+                // Latest Users
+                .panel.panel-default
+                  .panel-heading.main-color-bg
+                    h3.panel-title Edit Technician
+                  .panel-body
+                    form(method="POST" action="/tekers/#{data.teker._id}/edited" encType="multipart/form-data")
+                        .input-group
+                            span.input-group-addon First Name
+                            input.form-control(type='text', name="firstname", value="#{data.teker.firstname}")
+                        br
+                        .input-group
+                            span.input-group-addon Last Name
+                            input.form-control(type='text', name="lastname", value="#{data.teker.lastname}" )
+                        br
+                        .input-group
+                            span.input-group-addon Phone
+                            input.form-control(type='text', name="phone", value="#{data.teker.phone}")
+                        br
+                        .input-group
+                            span.input-group-addon E-mail
+                            input.form-control(type='text', name="email", value="#{data.teker.email}")
+                        br
+                        .input-group
+                            span.input-group-addon Town
+                            input.form-control(type='text', name="town", value="#{data.teker.location.town}")
+                        br
+                        .input-group
+                            span.input-group-addon City
+                            input.form-control(type='text', name="city", value="#{data.teker.location.city}")
+                        br
+                        .input-group
+                            span.input-group-addon Country
+                            input.form-control(type='text', name="country", value="#{data.teker.location.country}")
+                        br
+                        .input-group  
+                            label Field
+                            - var is_in = false
+                            .checkbox
+                                label
+                                each field in data.teker.fields
+                                    if ('Networking' === field)
+                                        - is_in = true
+                                if (is_in)
+                                    input(type='checkbox' name='field', checked="checked", value='Networking') 
+                                    |  Networking
+                                    - is_in = false
+                                else
+                                    input(type='checkbox' name='field' ,value='Networking') 
+                                    |  Networking
+                            .checkbox
+                                label
+                                each field in data.teker.fields
+                                    if ('Computer Engineering' === field)
+                                        - is_in = true
+                                if (is_in)
+                                    input(type='checkbox' name='field', checked="checked", value='Computer Engineering')
+                                    |  Computer Engineering
+                                    - is_in = false
+                                else
+                                    input(type='checkbox' name='field', value='Computer Engineering')
+                                    |  Computer Engineering
+                            .checkbox
+                                label
+                                each field in data.teker.fields
+                                    if ('Web Development' === field)
+                                        - is_in = true
+                                if (is_in)
+                                    input(type='checkbox' name='field', checked="checked" value='Web Development')
+                                    |  Web Development
+                                    - is_in = false
+                                else
+                                    input(type='checkbox' name='field', value='Web Development')
+                                    |  Web Development
+                            .checkbox
+                                label
+                                each field in data.teker.fields
+                                    if ('iOS Development' === field)
+                                        - is_in = true
+                                if (is_in)
+                                    input(type='checkbox' name='field', checked="checked"  value='iOS Development')
+                                    |  iOS Development
+                                    - is_in = false
+                                else
+                                    input(type='checkbox' name='field', value='iOS Development')
+                                    |  iOS Development
+
+                            .checkbox
+                                label
+                                each field in data.teker.fields
+                                    if ('Android Development' === field)
+                                        - is_in = true
+                                if (is_in)
+                                    input(type='checkbox' name='field', checked="checked"  value='Android Development')
+                                    |  Android Development
+                                    - is_in = false
+                                else
+                                    input(type='checkbox' name='field', value='Android Development')
+                                    |  Android Development
+
+                            .checkbox
+                                label
+                                each field in data.teker.fields
+                                    if ('system_upgrade' === field)
+                                        - is_in = true
+                                if (is_in)
+                                    input(type='checkbox' name='field', checked="checked"  value='System upgrade')
+                                    |  System Upgrade
+                                    - is_in = false
+                                else
+                                    input(type='checkbox' name='field', value='System upgrade')
+                                    |  System Upgrade
+                                    
+
+                        br
+                        .input-group
+                            span.input-group-addon Years of experience
+                            input.form-control(type='number', min="1", max="60", name='years_of_experience', value="#{data.teker.years_of_experience}")
+                        br
+                        .input-group
+                            span.input-group-addon Short Message
+                            textarea.form-control(type='text' name='message', value="") #{data.teker.message}
+                        br
+                        .input-group
+                            span.input-group-addon Image Url
+                            input.form-control(type='text' name='message', value="#{data.teker.image_url}") 
+                        br
+                        .input-group
+                            span.input-group-addon Picture
+                            input.form-control(type='file', name='display_picture')
+                        br
+                        input.btn.btn-default.blue.pull-right(type='submit' value="Save Changes") 
