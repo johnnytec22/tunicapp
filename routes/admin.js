@@ -1,7 +1,6 @@
 var express = require('express');
 var bcrypt = require('bcryptjs');
 var async = require('async');
-var Code = require('../models/passcode');
 var Admin = require('../models/admin');
 var User = require('../models/user');
 var Teker = require('../models/tekers');
@@ -46,21 +45,6 @@ route.get('/logout', function(req, res) {
 })
 
 
-//REQUEST FOR ADMIN REGISTRATION
-//route.get('/register', function(req, res) {
-    //res.render('admin_pages/admin_verification.jade');
-//});
-
-
-/*------------------------------------------------WILL BE DELETED------------------------------------------------*/
-//ROUTING TO A PAGE FOR CREATING PASSCODE
-
-/*-----------------------------------------------------------WILL BE DELETED----------------------------------------------------*/
-
-//ROUTE THAT VALIDATES PASSCODE TO GRANT ACCESS TO ADMIN REGISTRATION PAGE
-
-
-
 
 //ADMIN DASHBOARD VIEW REQUEST - admin must be logged in
 route.get('/admin_dashboard', function(req, res)  {
@@ -90,10 +74,7 @@ route.get('/admin_dashboard', function(req, res)  {
                             Admin.count(callback);
                         }
                     }, function(err, results) {
-                        if(err){
-                            req.flash('error', 'Something went wrong, Please try again!')
-                        }
-                        res.render('admin_dashboard/admin_dashboard.jade', {data: results });
+                        res.render('admin_dashboard/admin_dashboard.jade', {errors : err, data: results });
                     });
                 }
         });

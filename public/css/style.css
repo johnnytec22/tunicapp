@@ -1,5 +1,6 @@
 body{
-  background:#f4f4f4;
+  background:#f4f4f4 !important;
+  overflow-x: hidden !important;
 }
 
 /* Navbar */
@@ -77,6 +78,21 @@ nav#homepage-nav {
 }
 
 /* Custom */
+
+.parallax {
+    /* The image used */
+    background-image: url("../../images/technician_pictures/Background for YouTube Video.jpg");
+
+    /* Set a specific height */
+    min-height: 200px; 
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 .main-color-bg{
   background-color: #e74c3c !important;
   border-color: #c0392b !important;
@@ -167,6 +183,7 @@ nav#homepage-nav {
 }
 
 
+
 #myCarousel {
   height: 600px;
 }
@@ -186,15 +203,12 @@ nav {
 
 
 
-
-
-
-
-
-
-
-
 @media (max-width: 767px) {
+
+  header#header h1#register {
+    font-size: 40px !important;
+  }
+
   .navbar-default .navbar-nav .open .dropdown-menu > li > a {
     color: #ecf0f1;
   }

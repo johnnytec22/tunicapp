@@ -42,7 +42,7 @@ var tekerSchema = mongoose.Schema( {
         }
     },
     "fields": {
-        type: Array
+        type: [String]
     },
     "years_of_experience": {
         type: Number

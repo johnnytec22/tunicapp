@@ -1,0 +1,59 @@
+extends admin_dashboard.jade
+block vars
+  - var title = 'Edit'
+block div
+            .col-md-9
+                if errors && errors.length > 0
+                    .alert.alert-danger.alert-dismissible.fade-in(role="alert")
+                        button.close(type="button" data-dismiss="alert" aria-label="Close")
+                            span(aria-hidden="true") ×
+                        p= errors
+                if success && success.length > 0
+                    .alert.alert-success.alert-dismissible.fade-in(role="alert")
+                        button.close(type="button" data-dismiss="alert" aria-label="Close")
+                            span(aria-hidden="true") ×
+                        p= success
+                // Latest Users
+                .panel.panel-default
+                  .panel-heading.main-color-bg
+                    h3.panel-title Edit User
+                  .panel-body
+                    form(method="POST" action="/users/#{data.user._id}/edited" encType="multipart/form-data")
+                        .input-group
+                            span.input-group-addon First Name
+                            input.form-control(type='text', name="firstname", value="#{data.user.firstname}")
+                        br
+                        .input-group
+                            span.input-group-addon Last Name
+                            input.form-control(type='text', name="lastname", value="#{data.user.lastname}" )
+                        br
+                        .input-group
+                            span.input-group-addon Phone
+                            input.form-control(type='text', name="phone", value="#{data.user.phone}")
+                        br
+                        .input-group
+                            span.input-group-addon E-mail
+                            input.form-control(type='text', name="email", value="#{data.user.email}")
+                        br
+                        .input-group
+                            span.input-group-addon Username
+                            input.form-control(type='text', name="username", value="#{data.user.username}")
+                        br
+                        .input-group
+                            span.input-group-addon Address
+                            input.form-control(type='text', name="address", value="#{data.user.address}")
+                        br
+                        .input-group
+                            span.input-group-addon Town
+                            input.form-control(type='text', name="town", value="#{data.user.location.town}")
+                        br
+                        .input-group
+                            span.input-group-addon City
+                            input.form-control(type='text', name="city", value="#{data.user.location.city}")
+                        br
+                        .input-group
+                            span.input-group-addon Country
+                            input.form-control(type='text', name="country", value="#{data.user.location.country}")
+                        br
+                        br
+                        input.btn.btn-default.blue.pull-right(type='submit' value="Save Changes") 

@@ -110,15 +110,32 @@ body {
   color: #e74c3c !important;
 }
 
+.green-bg {
+  background-color: #009e59 !important;
+  color: white !important;
+}
+
 
 /* Footer */
 #footer{
-  background:#333333;
   color:#ffffff;
   text-align:center;
   padding:30px;
-  margin-top: 50px;
 }
+
+footer#footer {
+    margin-top: 50px !important;
+}
+footer#footer a{
+    text-decoration: none !important;
+    color: white !important;
+}
+footer#footer a:hover {
+  border-bottom: 2px solid white;
+  padding-bottom: 5px;
+}
+
+
 
 
 #myCarousel {
@@ -142,10 +159,10 @@ nav {
 
 .parallax {
     /* The image used */
-    background-image: url("../../images/front-end/2.jpg");
+    background-image: url("../../images/technician_pictures/Hero Image 1800 x 1000.jpg");
 
     /* Set a specific height */
-    min-height: 200px; 
+    min-height: 400px; 
 
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
@@ -157,9 +174,12 @@ nav {
 
 
 
-.item .carousel-caption > p {
+#myCarousel .item .carousel-caption > p {
   margin-top: 50px;
   font-size: 20px;
+}
+#myCarousel .item .carousel-caption > h1 {
+  font-size: 50px;
 }
 
 /* services section */
@@ -168,7 +188,7 @@ nav {
 }
 
 .marketing h2#shift {
-  margin-bottom: 130px;
+  margin-bottom: 50px;
 }
 
 /*icon circle*/
@@ -201,28 +221,69 @@ div.services {
   background-color: #c0392b;
   
 }
-
-.featurette {
-  min-height: 500px !important;
+h2#testimonies {
+  padding: 30px;
+  margin-top: 50px;
 }
-.row.featurette#feature_middle {
-  background-color: #e74c3c !important;
+
+#testimonyCarousel .carousel-inner .item{
   color: white; 
+  margin-top: 200px;
 }
 
-.row.featurette#feature_middle img {
-  box-shadow: 3px 3px 10px red;
+
+.row.featurette#feature_middle {
+  background-color: #f9f9f9 !important;
+  color: black; 
 }
 
 .row.featurette {
-  min-height: 500px !important;
+  min-height: 480px !important;
   padding-top :125px;
   padding-bottom: 50px;
 }
+.row.featurette:nth-child(even) img{
+  -ms-transform: rotate(10deg);
+  -webkit-transform: rotate(10deg);
+  transform: rotate(10deg);
+}
 
-.row.featurette img {
-  border-radius: 5px;
-  box-shadow: 3px 3px 10px gray;
+.row.featurette:nth-child(odd) img{
+  -ms-transform: rotate(-10deg);
+  -webkit-transform: rotate(-10deg);
+  transform: rotate(-10deg);
+}
+
+.row.featurette p.lead {
+  font-size: 16px !important;
+}
+@media (max-width: 767px) {
+    .row.featurette:nth-child(even) img{
+      -ms-transform: rotate(0deg);
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+  }
+
+  .row.featurette:nth-child(odd) img{
+      -ms-transform: rotate(0deg);
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+  }
+
+  #myCarousel .item .carousel-caption > p {
+      margin-top: 50px;
+      font-size: 15px;
+  }
+
+  #myCarousel .item .carousel-caption > h1 {
+      font-size: 30px;
+  }
+
+  #myCarousel .item .carousel-caption > p > a {
+      font-size: 14px;
+      padding: 8px;
+  }
+
 }
 
 

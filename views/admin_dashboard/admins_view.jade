@@ -13,35 +13,38 @@ block div
                         button.close(type="button" data-dismiss="alert" aria-label="Close")
                             span(aria-hidden="true") ×
                         p= success
-                // Latest Users
+                // Latest Administrators
                 .panel.panel-default
                   .panel-heading.main-color-bg
                     h3.panel-title Latest Administrators
                   .panel-body
                     form(method="POST", action="/admins/find")
                       .input-group
-                        input.form-control(type='text',name='search_string' placeholder='Search for...', required="required")
+                        input.form-control(type='text',name='search_string' placeholder='Search by names, email, phone...', required="required")
                         span.input-group-btn
                           button.btn.btn-info.blue(type="submit") find admin
                     br
-                    table.table.table-striped.table-hover.table-bordered.table-condensed.table-responsive
-                      tr
-                        th.text-center Name
-                        th.text-center Email
-                        th.text-center Role
-                        th
-                      each admin in data.admins
-                        tr
-                            td.text-center= admin.firstname+' '+admin.lastname
-                            td.text-center= admin.email
-                            td.text-center= admin.role
-                            td.text-center
-                              span 
-                                a.btn.btn-sm.edit-btn(href='/admins/#{admin._id}/edit')
-                                  i.fa.fa-pencil.fa-fw(aria-hidden="true")
-                                  | Edit 
-                              span 
-                                a.btn.btn-sm.red(href='/admins/#{admin._id}/delete') 
-                                  i.fa.fa-trash-o.fa-fw(aria-hidden="true")
-                                  | Delete
+                    .table-responsive
+                        table.table.table-striped.table-hover.table-bordered.table-condensed.table-responsive
+                            tr
+                              th.text-center Name
+                              th.text-center Email
+                              th.text-center Role
+                              th
+                            each admin in data.admins
+                              tr
+                                  td.text-center= admin.firstname+' '+admin.lastname
+                                  td.text-center= admin.email
+                                  td.text-center= admin.role
+                                  td.text-center
+                                    span 
+                                      a.btn.btn-sm.edit-btn(href='/admins/#{admin._id}/edit')
+                                        i.fa.fa-pencil.fa-fw(aria-hidden="true")
+                                        | Edit 
+                                    span 
+                                      a.btn.btn-sm.red(role='button', data-target='#DeleteModal', data-toggle='modal' data-href='/admins/#{admin._id}/delete' data-name="#{admin.firstname+' '+admin.lastname}") 
+                                        i.fa.fa-trash-o.fa-fw(aria-hidden="true")
+                                        | Delete
+                  
 
+              

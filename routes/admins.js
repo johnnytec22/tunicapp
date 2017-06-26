@@ -1,7 +1,6 @@
 var express = require('express');
 var bcrypt = require('bcryptjs');
 var async = require('async');
-var Code = require('../models/passcode');
 var Admin = require('../models/admin');
 var User = require('../models/user');
 var Teker = require('../models/tekers');
@@ -329,7 +328,6 @@ route.get('/:id/delete', function(req, res) {
 });
 
 
-
 //SEARCH ROUTE
 route.post('/find', function(req, res) {
     if (req.session && req.session.admin) {
@@ -352,12 +350,12 @@ route.post('/find', function(req, res) {
                     res.redirect('/admins');
                 }else{
                     var search_string = req.body.search_string;
-                    Admin.find({$or:[ {'username':  { $regex : new RegExp(search_string, "i") }}, {'email':  { $regex : new RegExp(search_string, "i") }}, {'firstname': { $regex : new RegExp(search_string, "i") }}, {'lastname': { $regex : new RegExp(search_string, "i") }}, {'phone':  { $regex : new RegExp(search_string, "i") }}, {'role': { $regex : new RegExp(search_string, "i") } } ]}).select('_id firstname').exec(function(err, admin) {
-                        if(!(admin.length > 0)){
+                    Admin.find({$or:[ {'username':  { $regex : new RegExp(search_string, "i") }}, {'email':  { $regex : new RegExp(search_string, "i") }}, {'firstname': { $regex : new RegExp(search_string, "i") }}, {'lastname': { $regex : new RegExp(search_string, "i") }}, {'phone':  { $regex : new RegExp(search_string, "i") }}, {'role': { $regex : new RegExp(search_string, "i") } } ]}).sort({registered_date: -1}).select('_id username firstname lastname phone email registered_date role').exec(function(err, admins) {
+                        if(!(admins.length > 0)){
                             req.flash('error', 'Admin not found!');
                             res.redirect('/admins');
                         }else{
-                            
+
                             async.parallel({
                                     users_count: function(callback) {
                                         User.count(callback);
@@ -367,12 +365,13 @@ route.post('/find', function(req, res) {
                                     },
                                     admins_count: function(callback) {
                                         Admin.count(callback);
-                                    },
-                                    admins : function(callback) {
-                                        Admin.find({$or:[ {'username':  { $regex : new RegExp(search_string, "i") }}, {'email':  { $regex : new RegExp(search_string, "i") }}, {'firstname': { $regex : new RegExp(search_string, "i") }}, {'lastname': { $regex : new RegExp(search_string, "i") }}, {'phone':  { $regex : new RegExp(search_string, "i") }}, {'role': { $regex : new RegExp(search_string, "i") } } ]}).sort({registered_date: -1}).select('_id username firstname lastname phone email registered_date role').exec(callback);
                                     }
                                 }, function(err, results) {
-                                    res.render('admin_dashboard/admins_view.jade', { error: err, data: results });
+                                    var data = {
+                                        admins : admins,
+                                        results : results
+                                    }
+                                    res.render('admin_dashboard/admins_view.jade', { errors: err, data});
                             });
                         }
                     })
@@ -384,7 +383,7 @@ route.post('/find', function(req, res) {
     }
 
     
-})
+});
 
 
 

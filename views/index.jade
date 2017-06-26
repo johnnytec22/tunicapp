@@ -15,8 +15,9 @@ html(lang='en' )
         title Sitename | #{title}
         // Bootstrap core CSS
         link(href='../css/bootstrap.min.css', rel='stylesheet')
-        link(href='../css/home_page.css', rel="stylesheet")
+        
         link(rel="stylesheet", href="../../css/font-awesome.min.css")
+        link(href='../css/home_page.css', rel="stylesheet")
     //
         NAVBAR
         ==================================================
@@ -36,6 +37,8 @@ html(lang='en' )
                             a(href='/') Home
                         li
                             a(href='#about') About
+                        li
+                            a(href='/technicians') Technnicians
                         li.dropdown
                             a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
                                 | Services 
@@ -73,7 +76,7 @@ html(lang='en' )
                     img.first-slide(src='../images/technician_pictures/Hero Image 1800 x 1000.jpg', alt='First slide')
                     .container
                         .carousel-caption
-                            h1(style="font-size: 50px;") Possibilities
+                            h1 Possibilities
                             p.showcase-paragraph
                                 | With our host of highly skilled and experienced technology Progessionals, Even the impossible is possible.
                             p
@@ -82,7 +85,7 @@ html(lang='en' )
                     img.second-slide(src='../images/technician_pictures/Background for YouTube Video.jpg', alt='Second slide')
                     .container
                         .carousel-caption
-                            h1(style="font-size: 50px;") Wide Range of Progessionals.
+                            h1 Wide Range of Progessionals.
                             p.showcase-paragraph
                                 | A home of thousands of professional and experienced technicians, you surely find one to meet your needs.
                             p
@@ -91,7 +94,7 @@ html(lang='en' )
                     img.third-slide(src='../images/front-end/1.jpg', alt='Third slide')
                     .container
                         .carousel-caption
-                            h1(style="font-size: 50px;") Fast and Convienient.
+                            h1 Fast and Convienient.
                             p.showcase-paragraph
                                 | Get your problems solved, your work done and your tech service needs render without you leaving your home.
                             p
@@ -113,29 +116,29 @@ html(lang='en' )
                 .row.text-center.services
                     .col-lg-12.col-md-12.col-sm-12.text-center
                         h2#shift FEATURED SERVICES
-                    .col-lg-4
+                .row.text-center
+                    .col-lg-4.col-md-4.col-sm-6.col-xs-12(style="height: 200px;")
                         .circle-bordered
                             i.fa.fa-laptop
                         h4 Web Development
-                    .col-lg-4
+                    .col-lg-4.col-md-4.col-sm-6.col-xs-12(style="height: 200px;")
                         strong.circle-bordered
                             i.fa.fa-apple
                         h4 iOS Development
                 
-                    .col-lg-4
+                    .col-lg-4.col-md-4.col-sm-6.col-xs-12(style="height: 200px;")
                         strong.circle-bordered
                             i.fa.fa-android
                         h4 Android Development
-                .row.text-center.services
-                    .col-lg-4
+                    .col-lg-4.col-md-4.col-sm-6.col-xs-12(style="height: 200px;")
                         strong.circle-bordered
                             i.fa.fa-sitemap
                         h4 Networking
-                    .col-lg-4
+                    .col-lg-4.col-md-4.col-sm-6.col-xs-12(style="height: 200px;")
                         strong.circle-bordered
                             i.fa.fa-upload
                         h4 System Upgrade
-                    .col-lg-4
+                    .col-lg-4.col-md-4.col-sm-6.col-xs-12(style="height: 200px;")
                         strong.circle-bordered
                             i.fa.fa-microchip
                         h4 Computer Engineering
@@ -144,26 +147,63 @@ html(lang='en' )
                         a.btn.btn-lg(href="/user/register") Hire A Pro
                     // /.col-lg-4
                 // /.row
-            .parallax
+            
+            .row
+                .col-lg-12.col-md-12.col-sm-12.text-center
+                        h2#testimonies TESTIMONIES
+            #testimonyCarousel.carousel.slide.parallax(data-ride='carousel', data-interval="3000")
+                // Indicators
+                ol.carousel-indicators
+                    li.active(data-target='#testimonyCarousel', data-slide-to='0')
+                    li(data-target='#testimonyCarousel', data-slide-to='1')
+                    li(data-target='#testimonyCarousel', data-slide-to='2')
+                .carousel-inner(role='listbox')
+                    .item.active
+                        .first-slide.text-center
+                            p.showcase-paragraph
+                                | This is place is realy cool...
+                            p
+                                em(style="color: lightgray") Jovins Inc.
+                                
+                    .item
+                        .second-slide.text-center
+                            p.showcase-paragraph
+                                | These guys save us from huge technical cost, Thanks...
+                            p
+                                em(style="color: lightgray") MTN Nigeria
+                                
+                    .item
+                        .third-slide.text-center
+                            p.showcase-paragraph
+                                | These platform took so much worries and stress from me, got our systems fixed in no time.
+                            p
+                                em(style="color: lightgray") Swif
+                                
+                a.left.carousel-control(href='#testimonyCarousel', role='button', data-slide='prev')
+                    span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
+                    span.sr-only Previous
+                a.right.carousel-control(href='#testimonyCarousel', role='button', data-slide='next')
+                    span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
+                    span.sr-only Next
             // START THE FEATURETTES
             
-            .row.featurette
+            .row.featurette#about
                 .container
                     .col-md-7.col-sm-7
                         h2.featurette-heading.text-center
-                            | First featurette heading. 
+                            | ABOUT US
             
                         p.lead
                             | Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.
                     .col-md-5.col-sm-5
                         img.featurette-image.img-responsive.center-block(src='../images/technician_pictures/Blog 1 (Feature) 1165 x 665.jpg', alt='Generic placeholder image')
-            .parallax
+
 
             .row.featurette#feature_middle
                 .container
                     .col-md-7.col-md-push-5.col-sm-7.col-sm-push-5
                         h2.featurette-heading.text-center
-                            | Oh yeah, it's that good. 
+                            | THE TECHNICIANS
         
                         p.lead
                             | Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.
@@ -175,19 +215,31 @@ html(lang='en' )
                 .container
                     .col-md-7.col-sm-7
                         h2.featurette-heading.text-center
-                            | And lastly, this one. 
+                            | WHAT WE DO
  
                         p.lead
                             | Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.
                     .col-md-5.col-sm-5
                         img.featurette-image.img-responsive.center-block(src='../images/technician_pictures/camels.jpg', alt='Generic placeholder image')
-            .row#service-btn
+             
+             .row.featurette#feature_middle
+                .container
+                    .col-md-7.col-md-push-5.col-sm-7.col-sm-push-5
+                        h2.featurette-heading.text-center
+                            | WHAT WE DON'T DO
+        
+                        p.lead
+                            | Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.
+                    .col-md-5.col-md-pull-7.col-sm-5.col-sm-pull-7
+                        img.featurette-image.img-responsive.center-block(src='../images/technician_pictures/Blog 1 Body Image (1165 x 665).jpg', alt='Generic placeholder image')
+            
+            .row#service-btn(style="margin-top: 50px;")
                 .col-lg-12.col-md-12.col-sm-12.text-center
                     a.btn.btn-lg(href="/user/register") Get Started
             // /END THE FEATURETTES
             // FOOTER
             
-            footer#footer
+            footer.green-bg#footer
                 .container
                     p.pull-right
                         a(href='#')
@@ -205,3 +257,15 @@ html(lang='en' )
         // Placed at the end of the document so the pages load faster
         script(src='../js/jquery.min.js')
         script(src='../js/bootstrap.min.js')
+
+
+
+
+
+
+
+
+
+
+
+        

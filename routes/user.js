@@ -15,15 +15,13 @@ route.post('/login', function(req, res) {
     
     User.findOne(querry, function(err, user) {
         if (!user) {
-            req.flash('error', 'Incorrect username or password')
-            res.render('login.jade');
+            res.render('login.jade', {errors : 'Incorrect username or password'});
         }else {
             if (bcrypt.compareSync(req.body.password, user.password)) {
                 req.session.user = user.email;
                 res.redirect('/technicians');
             }else{
-                req.flash('error', 'Incorrect username or passwor')
-                res.render('login.jade');
+                res.render('login.jade', {errors: 'Incorrect username or password'});
             }
         }
 
@@ -43,8 +41,7 @@ route.post('/register', function(req, res) {
     var error = req.validationErrors();
 
     if (error){
-        req.flash('error', error[0].msg);
-        res.render('register.jade');
+        res.render('register.jade', {errors: error[0].msg});
     }else{
         var salt = bcrypt.genSaltSync(10);
         var hash = bcrypt.hashSync(req.body.password, salt);
@@ -72,8 +69,7 @@ route.post('/register', function(req, res) {
                 if (err.code === 11000) {
                     error = "Email or Username Already exist"
                 }
-                req.flash('error', error);
-                res.render('register.jade');
+                res.render('register.jade', {errors: error});
             }else{
                 req.session.user = user.email;
                 res.redirect('/technicians');

@@ -44,62 +44,88 @@ html(lang='en' )
                                 span.caret
                             ul.dropdown-menu
                                 li
-                                    a(href='#') Web Development
+                                    a(href='/technicians/Web Development') Web Development
                                 li
-                                    a(href='#') iOS Development
+                                    a(href='/technicians/iOS Development') iOS Development
                                 li
-                                    a(href='#') Android Development
+                                    a(href='/technicians/Android Development') Android Development
                                 
                                 li.divider(role='separator')
 
                                 li
-                                    a(href='#') Networking
+                                    a(href='/technicians/Networking') Networking
                                 li
-                                    a(href='#') System Upgrade
+                                    a(href='/technicians/System Upgrade') System Upgrade
                                 li
-                                    a(href='#') Computer Engineering
-                    form.navbar-form.navbar-left(method="POST", action="/technician/teker_search", style="border: 0 !important;")
+                                    a(href='/technicians/Computer Engineering') Computer Engineering
+                    
+                    form.navbar-form.navbar-left(method="POST", action="/technicians/find", style="border: 0 !important;")
                         .input-group(style="border: 0 !important;")
-                            input.form-control(type='text', name='search' placeholder='Search', style="border: 0 !important;")
-                            span.input-group-addon.btn.btn-default.green(style="border: 0 !important")
-                                a(href="/technician/teker_search")
-                                | Search
+                            input.form-control(type='text', name='search_string' placeholder='Name/town/city/country/phone/email', style="border: 0 !important;")
+                            span.input-group-btn(style="border: 0 !important")
+                                button.btn.green(type="submit") Search
                     
                     ul.nav.navbar-nav.navbar-right
+                        li
+                            a(href='#') Hi, #{user.username}
                         li.active
                             a(href='/user/logout') Logout
         
-        .row#welcome.main-color-bg(style="min-height: 400px; padding-top: 130px;  padding-bottom: 30px; margin-bottom: 40px;")
+        .row#welcome.parallax
             .col-md-12
                 .container.text-center
                     h1(style="font-size: 70px; margin: 50px 0 50px 0;") Welcome
-                    h4.
-                        Happy to have here with us. We are a pool of highly exeprienced and qualified professionals always ready to provide for your tech needs.
-                    br
-                    p Look around you will surely find someone to get your job done.
+                    .row
+                        .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1.col-sm-12.col-xs-12
+                            h4.
+                                We are a pool of highly exeprienced and qualified professionals always ready to provide for your tech needs.
+                            br
+                            p Look around you will surely find someone to get your job done.
         
+        .row 
+            .container
+                .col-lg-4.col-lg-offset-4.col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2.col-xs-12
+                    if errors && errors.length > 0
+                        .alert.alert-danger.alert-dismissible.fade-in(role="alert")
+                            button.close(type="button" data-dismiss="alert" aria-label="Close")
+                                span(aria-hidden="true") ×
+                            p= errors
+                    if success && success.length > 0
+                        .alert.alert-success.alert-dismissible.fade-in(role="alert")
+                            button.close(type="button" data-dismiss="alert" aria-label="Close")
+                                span(aria-hidden="true") ×
+                            p= success
         .row
             .container
+                .row.text-center
+                    h2(style="margin-bottom: 40px;") HERE WE ARE
                 each teker in data
                     .col-sm-6.col-md-4.col-lg-4
-                        .thumbnail
-                            img(src='../#{teker.image_url}', alt='technician image', style="height: 200px; width: 100%;")
+                        .thumbnail(style="height:550px; padding: 0 !important")
+                            img(src='../#{teker.image_url}', alt='technician image', style="height: 200px; width: 100%; border-top-left-radius: 4px; border-top-right-radius: 4px")
                             .caption
-                                h3.text-center= teker.firstname+ " " +teker.lastname
-                                ul(style="list-style: none;")
+                                h2.text-center(style="margin-bottom: 30px;")= teker.firstname+ " " +teker.lastname
+                                h4.text-center(style="margin-bottom: 15px;")
+                                    strong Specializations
+                                ul.list-unstyled.text-center
                                     each field in teker.fields
-                                        li=field
-                                strong Phone : 
-                                span=teker.phone +"  "
-                                strong Location :
-                                span=teker.location.town+', '+teker.location.city
+                                        li=field 
+                                .row
+                                    .col-lg-6.col-md-6.col-sm-6.col-xs-6.text-center
+                                        strong Phone
+                                        p=teker.phone
+                                    .col-lg-6.col-md-6.col-sm-6.col-xs-6.text-center
+                                        strong Location
+                                        p=teker.location.town+', '+teker.location.city
                                 p.text-center
-                                    a.btn.btn-sm.green(href='/tekers/#{teker._id}/view', role='button') More info
+                                    - var teker = JSON.stringify(teker)
+                                    a.btn.btn-md.green(role='button', data-target='#technicianInfo', data-toggle='modal' data-teker="#{teker}") More info
+                    
 
 
     
 
-        footer#footer
+        footer#footer.green-bg
             .container
                 p.pull-right
                     a(href='#')
@@ -110,6 +136,54 @@ html(lang='en' )
                     a(href='#') Privacy
                     |  · 
                     a(href='#') Terms
+
+        // Modal
+        #technicianInfo.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+            .modal-dialog.modal-lg
+                .modal-content
+                    .modal-header.text-center
+                        h2 TECHNICIAN DATA
+                    .modal-body.text-center(style="padding: 0 !important")
+                        img(style="width: 100%;")
+                        h1.text-center //name
+                        .row#message.text-center
+                            .col-xs-12
+                                p //message
+                        .row#specializations
+                            .col-lg-12.col-md-12.col-sm-12.col-xs-12.text-center
+                                h4: strong Specializations
+                                hr.green.text-center(style="margin-top: 0 !important; margin-bottom: 0 !important; width: 60px; padding: 2px; border-radius: 4px;")
+                                #fields(style="font-family: Comfortaa; font-size: 16px;")
+                        .row#contact
+                            .col-lg-6.col-md-6.col-sm-6.col-xs-12.text-center
+                                strong Phone
+                                hr.green.text-center(style="margin-top: 0 !important; margin-bottom: 0 !important; width: 40px; padding: 2px; border-radius: 4px;")
+                                p#phone //cel number
+                            .col-lg-6.col-md-6.col-sm-6.col-xs-12.text-center
+                                strong Email
+                                hr.green.text-center(style="margin-top: 0 !important; margin-bottom: 0 !important; width: 40px; padding: 2px; border-radius: 4px;")
+                                p#email //email address
+                        .row#location
+                            .col-lg-4.col-md-4.col-sm-4.col-xs-12.text-center
+                                strong Town
+                                hr.green.text-center(style="margin-top: 0 !important; margin-bottom: 0 !important; width: 40px; padding: 2px; border-radius: 4px;")
+                                p#town //town
+                            .col-lg-4.col-md-4.col-sm-4.col-xs-12.text-center
+                                strong City
+                                hr.green.text-center(style="margin-top: 0 !important; margin-bottom: 0 !important; width: 40px; padding: 2px; border-radius: 4px;")
+                                p#city //city
+                            .col-lg-4.col-md-4.col-sm-4.col-xs-12.text-center
+                                strong Country
+                                hr.green.text-center(style="margin-top: 0 !important; margin-bottom: 0 !important; width: 40px; padding: 2px; border-radius: 4px;")
+                                p#country //country
+                        .row#experience
+                            .col-lg-12.col-md-12.col-sm-12.col-xs-12.text-center
+                                strong Experience
+                                br
+                                p.badge.green // experience
+
+                    .modal-footer
+                        button.btn.btn-default.btn-md.green(style="border: 0 !important",data-dismiss='modal', aria-hidden='true') Close
         // /.container
         //
             Bootstrap core JavaScript

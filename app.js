@@ -20,6 +20,7 @@ var session_config = require('./config/session');
 var admin = require('./routes/admin');
 var tekers = require('./routes/tekers');
 var admins = require('./routes/admins');
+var admin_users = require('./routes/admin_users');
 
 
 //connecting to mongodb
@@ -45,7 +46,7 @@ app.use(fileUpload());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 //store for our static files
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
 //using our session file
 app.use(session_config);
 //middleware for flash errors and success messages to the client
@@ -82,13 +83,14 @@ app.get('/', function(req, res) {
 
 app.use('/technicians',  technician);
 app.use('/user', user);
+app.use('/users', admin_users);
 app.use('/admin', admin);
 app.use('/tekers', tekers);
 app.use('/admins', admins);
 
 
 //RUNNING OUT SERVER
-var PORT = 8000;
+var PORT = 3000;
 app.listen(PORT, function() {
   console.log("Server running at Port "+PORT);
-})
+});
