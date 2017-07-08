@@ -25,7 +25,7 @@ var admin_users = require('./routes/admin_users');
 
 //connecting to mongodb
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://127.0.0.1/tunicapp');
+mongoose.connect('mongodb://johnnytec22:neme7jo@@ds153422.mlab.com:53422/tunicapp');
 var db = mongoose.connection;
 db.on('open', function() {
 	console.log('We are connected to mongoDB');
