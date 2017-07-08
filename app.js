@@ -90,7 +90,7 @@ app.use('/admins', admins);
 
 
 //RUNNING OUT SERVER
-var PORT = 3000;
+var PORT = process.env.PORT || 8080;
 app.listen(PORT, function() {
   console.log("Server running at Port "+PORT);
 });
