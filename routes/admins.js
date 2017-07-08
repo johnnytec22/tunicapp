@@ -127,7 +127,7 @@ route.post('/register', function(req, res) {
                         
                         Admin.create(admin, function(err, admin) {
                             if (err) {
-                                var error = "Empty required field, please try again";
+                                var error = "Empty Required Fields. Please, Try Again";
                                 if (err.code === 11000) {
                                     error = "Email or Username already exist"
                                 }
@@ -135,7 +135,7 @@ route.post('/register', function(req, res) {
                                 res.redirect('/admins/register');
                             }else{
                                 req.flash('success', 'Admin '+admin.firstname+' has been successfully register.');
-                                res.redirect('/admins/register');
+                                res.redirect('/admins');
                             }
 
                         });

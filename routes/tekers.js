@@ -24,7 +24,7 @@ route.post('/add', function(req, res) {
                 };
                 if (!req.files){
                     req.flash('error', 'No File was uploaded');
-                    res.redirect('/admin/admins_dashboard');
+                    res.redirect('/admin/admin_dashboard');
                 }
                 var teker_picture_data = req.files.display_picture;
                 if (!teker_picture_data){
@@ -64,8 +64,7 @@ route.post('/add', function(req, res) {
                                     }
                                     res.redirect('/admin/admin_dashboard');
                                 }else{
-                                    var name = added_teker.firstname;
-                                    req.flash('success', name+'\'s data was Successfully Saved');
+                                    req.flash('success', added_teker.firstname+'\'s data was Successfully Saved');
                                     res.redirect('/admin/admin_dashboard');
                                 }
                             });

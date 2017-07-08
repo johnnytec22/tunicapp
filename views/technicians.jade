@@ -1,6 +1,6 @@
 
 block vars
-    - var title = "Home"
+    - var title = "Technicians"
 
 doctype html
 html(lang='en' )
@@ -101,10 +101,10 @@ html(lang='en' )
                     h2(style="margin-bottom: 40px;") HERE WE ARE
                 each teker in data
                     .col-sm-6.col-md-4.col-lg-4
-                        .thumbnail(style="height:550px; padding: 0 !important")
-                            img(src='../#{teker.image_url}', alt='technician image', style="height: 200px; width: 100%; border-top-left-radius: 4px; border-top-right-radius: 4px")
+                        .thumbnail(style="height:600px; padding: 0 !important")
+                            img(src='../#{teker.image_url}', alt='technician image', style="height: 250px; width: 100%; border-top-left-radius: 4px; border-top-right-radius: 4px")
                             .caption
-                                h2.text-center(style="margin-bottom: 30px;")= teker.firstname+ " " +teker.lastname
+                                h2.text-center.text-capitalize(style="margin-bottom: 30px;")= teker.firstname+ " " +teker.lastname
                                 h4.text-center(style="margin-bottom: 15px;")
                                     strong Specializations
                                 ul.list-unstyled.text-center
@@ -112,11 +112,15 @@ html(lang='en' )
                                         li=field 
                                 .row
                                     .col-lg-6.col-md-6.col-sm-6.col-xs-6.text-center
-                                        strong Phone
+                                        strong
+                                            i.fa.fa-phone.fa-fw(style="color: limegreen;")
+                                            | Phone
                                         p=teker.phone
                                     .col-lg-6.col-md-6.col-sm-6.col-xs-6.text-center
-                                        strong Location
-                                        p=teker.location.town+', '+teker.location.city
+                                        strong 
+                                            i.fa.fa-map-marker.fa-fw(style="color: orange;")
+                                            | Location
+                                        p.text-capitalize=teker.location.town+', '+teker.location.city
                                 p.text-center
                                     - var teker = JSON.stringify(teker)
                                     a.btn.btn-md.green(role='button', data-target='#technicianInfo', data-toggle='modal' data-teker="#{teker}") More info
@@ -125,7 +129,7 @@ html(lang='en' )
 
     
 
-        footer#footer.green-bg
+        footer#footer
             .container
                 p.pull-right
                     a(href='#')
@@ -145,42 +149,54 @@ html(lang='en' )
                         h2 TECHNICIAN DATA
                     .modal-body.text-center(style="padding: 0 !important")
                         img(style="width: 100%;")
-                        h1.text-center //name
+                        h1(style="color: gray").text-center.text-capitalize //name
                         .row#message.text-center
-                            .col-xs-12
-                                p //message
-                        .row#specializations
+                            .col-xs-12.col-sm-12.col-md-6.col-md-offset-3
+                                div
+                                    i.fa.fa-quote-left.fa-xs(style="color: dodgerblue;")
+                                    blockquote(style="padding: 5px !important; margin: 0 !important; color: lightgray; font-size: 15px ;border-left: 0 !important;") //message
+                        .row#specializations(style="margin-top: 20px !important; margin-bottom: 15px;")
                             .col-lg-12.col-md-12.col-sm-12.col-xs-12.text-center
-                                h4: strong Specializations
-                                hr.green.text-center(style="margin-top: 0 !important; margin-bottom: 0 !important; width: 60px; padding: 2px; border-radius: 4px;")
-                                #fields(style="font-family: Comfortaa; font-size: 16px;")
+                                h4(style="margin: 0 !important; padding: 0 !important;"): strong 
+                                    i.fa.fa-graduation-cap.fa-fw(style="color: gray")
+                                    | Specializations
+                                #fields(style="font-family: Comfortaa; font-size: 13px; margin-top: 10px;")
+                                    .row
+                                        div.text-center //fields
                         .row#contact
                             .col-lg-6.col-md-6.col-sm-6.col-xs-12.text-center
-                                strong Phone
-                                hr.green.text-center(style="margin-top: 0 !important; margin-bottom: 0 !important; width: 40px; padding: 2px; border-radius: 4px;")
+                                strong 
+                                    i.fa.fa-phone.fa-fw(style="color: limegreen;")
+                                    | Phone
                                 p#phone //cel number
                             .col-lg-6.col-md-6.col-sm-6.col-xs-12.text-center
-                                strong Email
-                                hr.green.text-center(style="margin-top: 0 !important; margin-bottom: 0 !important; width: 40px; padding: 2px; border-radius: 4px;")
+                                strong 
+                                    i.fa.fa-envelope.fa-fw(style="color: red;")
+                                    | Email
                                 p#email //email address
                         .row#location
                             .col-lg-4.col-md-4.col-sm-4.col-xs-12.text-center
-                                strong Town
-                                hr.green.text-center(style="margin-top: 0 !important; margin-bottom: 0 !important; width: 40px; padding: 2px; border-radius: 4px;")
-                                p#town //town
+                                strong 
+                                    i.fa.fa-street-view.fa-fw(style="color: dodgerblue;")
+                                    | Town
+                                p.text-capitalize#town //town
                             .col-lg-4.col-md-4.col-sm-4.col-xs-12.text-center
-                                strong City
-                                hr.green.text-center(style="margin-top: 0 !important; margin-bottom: 0 !important; width: 40px; padding: 2px; border-radius: 4px;")
-                                p#city //city
+                                strong 
+                                    i.fa.fa-map-marker.fa-fw(style="color: orange;")
+                                    | City
+                                p.text-capitalize#city //city
                             .col-lg-4.col-md-4.col-sm-4.col-xs-12.text-center
-                                strong Country
-                                hr.green.text-center(style="margin-top: 0 !important; margin-bottom: 0 !important; width: 40px; padding: 2px; border-radius: 4px;")
-                                p#country //country
+                                strong 
+                                    i.fa.fa-globe.fa-fw(style="color: #009e59;")
+                                    | Country
+                                p.text-capitalize#country //country
                         .row#experience
                             .col-lg-12.col-md-12.col-sm-12.col-xs-12.text-center
-                                strong Experience
+                                strong 
+                                    i.fa.fa-suitcase.fa-fw(style="color: green;")
+                                    | Experience
                                 br
-                                p.badge.green // experience
+                                p.badge(style="background-color: green; color: white;") // experience
 
                     .modal-footer
                         button.btn.btn-default.btn-md.green(style="border: 0 !important",data-dismiss='modal', aria-hidden='true') Close

@@ -84,7 +84,7 @@ nav#homepage-nav {
     background-image: url("../../images/technician_pictures/Background for YouTube Video.jpg");
 
     /* Set a specific height */
-    min-height: 200px; 
+    min-height: 300px; 
 
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
@@ -110,8 +110,9 @@ nav#homepage-nav {
 .blue {
   background-color: dodgerblue !important;
   color: white !important;
-  
 }
+
+
 .blue-top {
   color: dodgerblue !important;
 }
@@ -169,17 +170,45 @@ nav#homepage-nav {
   text-align:center;
 }
 
-#login{
+#main #login{
   margin-top:30px;
 }
 
+#main #login form {
+  margin-top: 40px;
+  font-size: 16px;
+}
+
+#main #login h3 {
+  font-size: 18px;
+}
+
+#main #login form #register-btn {
+  background: #e74c3c !important;
+  color: white !important;
+  box-shadow: 1px 1px 4px 0px #c0392b !important;
+  border: 0 !important;
+}
+#main #login form #register-btn:hover {
+  border-radius: 0 !important;
+}
+
+
+#main #login form .input-group .input-group-addon {
+  background: #e74c3c !important;
+  color: white !important;
+  border: 0 !important;
+}
+
+
+
+
 /* Footer */
 #footer{
-  background:#333333;
+  background: #c0392b;
   color:#ffffff;
   text-align:center;
-  padding:30px;
-  margin-top: 50px;
+  padding: 20px;
 }
 
 
@@ -187,6 +216,7 @@ nav#homepage-nav {
 #myCarousel {
   height: 600px;
 }
+
 #myCarousel img{
   height: 600px;
   width: 100%;
@@ -203,7 +233,26 @@ nav {
 
 
 
+
+@media (max-width: 400px) {
+  #main #login h3{
+    font-size: 15px;
+  }
+
+  #main #login form .input-group span{
+    font-size: 10px;
+  }
+
+  #main #login form .input-group input {
+    font-size: 12px;
+  }
+}
+
+
+
+
 @media (max-width: 767px) {
+  
 
   header#header h1#register {
     font-size: 40px !important;

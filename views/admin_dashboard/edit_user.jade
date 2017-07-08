@@ -21,11 +21,11 @@ block div
                     form(method="POST" action="/users/#{data.user._id}/edited" encType="multipart/form-data")
                         .input-group
                             span.input-group-addon First Name
-                            input.form-control(type='text', name="firstname", value="#{data.user.firstname}")
+                            input.form-control.text-capitalize(type='text', name="firstname", value="#{data.user.firstname}")
                         br
                         .input-group
                             span.input-group-addon Last Name
-                            input.form-control(type='text', name="lastname", value="#{data.user.lastname}" )
+                            input.form-control.text-capitalize(type='text', name="lastname", value="#{data.user.lastname}" )
                         br
                         .input-group
                             span.input-group-addon Phone
@@ -41,19 +41,19 @@ block div
                         br
                         .input-group
                             span.input-group-addon Address
-                            input.form-control(type='text', name="address", value="#{data.user.address}")
+                            input.form-control.text-capitalize(type='text', name="address", value="#{data.user.address}")
                         br
                         .input-group
                             span.input-group-addon Town
-                            input.form-control(type='text', name="town", value="#{data.user.location.town}")
+                            input.form-control.text-capitalize(type='text', name="town", value="#{data.user.location.town}")
                         br
                         .input-group
                             span.input-group-addon City
-                            input.form-control(type='text', name="city", value="#{data.user.location.city}")
+                            input.form-control.text-capitalize(type='text', name="city", value="#{data.user.location.city}")
                         br
                         .input-group
                             span.input-group-addon Country
-                            input.form-control(type='text', name="country", value="#{data.user.location.country}")
+                            input.form-control.text-capitalize(type='text', name="country", value="#{data.user.location.country}")
                         br
                         br
                         input.btn.btn-default.blue.pull-right(type='submit' value="Save Changes") 

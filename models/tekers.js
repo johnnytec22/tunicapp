@@ -4,41 +4,50 @@ var mongoose = require('mongoose');
 var tekerSchema = mongoose.Schema( {
 
     "image_url": {
-        type: String
+        type: String,
+        lowercase: true
     },
 
     "message": {
-        type: String
+        type: String,
+        lowercase: true
     },
 
     "firstname": {
         type: String,
-        required: true
+        required: true,
+        lowercase: true
     },
     "lastname": {
         type: String,
-        required: true
+        required: true,
+        lowercase: true
     },
     "phone": {
         type: String,
-        required: true
+        required: true,
+        lowercase: true
     },
     "email": {
         type: String,
         required: true,
-        unique: true
+        unique: true,
+        lowercase: true
     },
     "location": {
         "town": {
             type: String,
-            required: true
+            required: true,
+            lowercase: true
         },
         "city": {
             type: String,
-            required: true
+            required: true,
+            lowercase: true
         },
         "country": {
-            type: String
+            type: String,
+            lowercase: true
         }
     },
     "fields": {

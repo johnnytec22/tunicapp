@@ -21,12 +21,12 @@ block div
                     form(method="POST" action="/admins/#{data.admin._id}/edited")
                         .input-group
                             span.input-group-addon First Name
-                            input.form-control(type="text", name="admin_firstname" value="#{data.admin.firstname}")
+                            input.form-control.text-capitalize(type="text", name="admin_firstname" value="#{data.admin.firstname}")
                         br
                         br
                         .input-group
                             span.input-group-addon Last Name
-                            input.form-control(type="text", name="admin_lastname" value="#{data.admin.lastname}")
+                            input.form-control.text-capitalize(type="text", name="admin_lastname" value="#{data.admin.lastname}")
                         br
                         br
                         .input-group

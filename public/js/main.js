@@ -33,10 +33,10 @@ $('#technicianInfo').on('show.bs.modal', function (event) {
   var html = '';
   for( field in teker.fields)
   {
-    html += '<p>'+teker.fields[field]+'</p>'
+    html += '<span> <i class="fa fa-star-half-o fa-fw" style="color: gold;"></i> '+teker.fields[field]+'</span> </br>'
   }
-  modal.find('.modal-body #specializations #fields').html(html);
-  modal.find('.modal-body #message p').text(teker.message);
+  modal.find('.modal-body #specializations #fields div').html(html);
+  modal.find('.modal-body #message div blockquote').text(teker.message);
   modal.find('.modal-body #contact #phone').text(teker.phone)
   modal.find('.modal-body #contact #email').text(teker.email)
   modal.find('.modal-body #location #town').text(teker.location.town)

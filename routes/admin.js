@@ -74,7 +74,7 @@ route.get('/admin_dashboard', function(req, res)  {
                             Admin.count(callback);
                         }
                     }, function(err, results) {
-                        res.render('admin_dashboard/admin_dashboard.jade', {errors : err, data: results });
+                        res.render('admin_dashboard/admin_dashboard.jade', {error : err, data: results });
                     });
                 }
         });

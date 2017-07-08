@@ -16,7 +16,7 @@ block div
                 // Latest Administrators
                 .panel.panel-default
                   .panel-heading.main-color-bg
-                    h3.panel-title Latest Administrators
+                    h3.panel-title Administrators
                   .panel-body
                     form(method="POST", action="/admins/find")
                       .input-group
@@ -33,7 +33,7 @@ block div
                               th
                             each admin in data.admins
                               tr
-                                  td.text-center= admin.firstname+' '+admin.lastname
+                                  td.text-center.text-capitalize= admin.firstname+' '+admin.lastname
                                   td.text-center= admin.email
                                   td.text-center= admin.role
                                   td.text-center

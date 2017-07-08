@@ -15,7 +15,6 @@ html(lang='en' )
         title Sitename | #{title}
         // Bootstrap core CSS
         link(href='../css/bootstrap.min.css', rel='stylesheet')
-        
         link(rel="stylesheet", href="../../css/font-awesome.min.css")
         link(href='../css/home_page.css', rel="stylesheet")
     //
@@ -39,23 +38,6 @@ html(lang='en' )
                             a(href='#about') About
                         li
                             a(href='/technicians') Technnicians
-                        li.dropdown
-                            a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
-                                | Services 
-                                span.caret
-                            ul.dropdown-menu
-                                li
-                                    a(href='#') Action
-                                li
-                                    a(href='#') Another action
-                                li
-                                    a(href='#') Something else here
-                                li.divider(role='separator')
-                                li.dropdown-header Nav header
-                                li
-                                    a(href='#') Separated link
-                                li
-                                    a(href='#') One more separated link
                     
                     ul.nav.navbar-nav.navbar-right
                         li
@@ -80,7 +62,7 @@ html(lang='en' )
                             p.showcase-paragraph
                                 | With our host of highly skilled and experienced technology Progessionals, Even the impossible is possible.
                             p
-                                a.btn.btn-lg.btn-default.showcase-btn(href='/user/register', role='button') Have Your Need Met
+                                a.btn.btn-lg.btn-default.showcase-btn(href='/user/login', role='button') Have Your Need Met
                 .item
                     img.second-slide(src='../images/technician_pictures/Background for YouTube Video.jpg', alt='Second slide')
                     .container
@@ -89,7 +71,7 @@ html(lang='en' )
                             p.showcase-paragraph
                                 | A home of thousands of professional and experienced technicians, you surely find one to meet your needs.
                             p
-                                a.btn.btn-lg.btn-default.showcase-btn(href='/user/register', role='button') Get Started
+                                a.btn.btn-lg.btn-default.showcase-btn(href='/user/login', role='button') Get Started
                 .item
                     img.third-slide(src='../images/front-end/1.jpg', alt='Third slide')
                     .container
@@ -98,7 +80,7 @@ html(lang='en' )
                             p.showcase-paragraph
                                 | Get your problems solved, your work done and your tech service needs render without you leaving your home.
                             p
-                                a.btn.btn-lg.btn-default.showcase-btn(href='/user/register', role='button') Meet Them
+                                a.btn.btn-lg.btn-default.showcase-btn(href='/user/login', role='button') Meet Them
             a.left.carousel-control(href='#myCarousel', role='button', data-slide='prev')
                 span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
                 span.sr-only Previous
@@ -116,6 +98,7 @@ html(lang='en' )
                 .row.text-center.services
                     .col-lg-12.col-md-12.col-sm-12.text-center
                         h2#shift FEATURED SERVICES
+            
                 .row.text-center
                     .col-lg-4.col-md-4.col-sm-6.col-xs-12(style="height: 200px;")
                         .circle-bordered
@@ -144,13 +127,14 @@ html(lang='en' )
                         h4 Computer Engineering
                 .row#service-btn
                     .col-lg-12.col-md-12.col-sm-12.text-center
-                        a.btn.btn-lg(href="/user/register") Hire A Pro
+                        a.btn.btn-lg(href="/user/login") Hire A Pro
                     // /.col-lg-4
                 // /.row
             
             .row
                 .col-lg-12.col-md-12.col-sm-12.text-center
                         h2#testimonies TESTIMONIES
+        
             #testimonyCarousel.carousel.slide.parallax(data-ride='carousel', data-interval="3000")
                 // Indicators
                 ol.carousel-indicators
@@ -192,6 +176,7 @@ html(lang='en' )
                     .col-md-7.col-sm-7
                         h2.featurette-heading.text-center
                             | ABOUT US
+                        hr
             
                         p.lead
                             | Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.
@@ -204,7 +189,7 @@ html(lang='en' )
                     .col-md-7.col-md-push-5.col-sm-7.col-sm-push-5
                         h2.featurette-heading.text-center
                             | THE TECHNICIANS
-        
+                        hr
                         p.lead
                             | Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.
                     .col-md-5.col-md-pull-7.col-sm-5.col-sm-pull-7
@@ -216,7 +201,7 @@ html(lang='en' )
                     .col-md-7.col-sm-7
                         h2.featurette-heading.text-center
                             | WHAT WE DO
- 
+                        hr
                         p.lead
                             | Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.
                     .col-md-5.col-sm-5
@@ -227,7 +212,7 @@ html(lang='en' )
                     .col-md-7.col-md-push-5.col-sm-7.col-sm-push-5
                         h2.featurette-heading.text-center
                             | WHAT WE DON'T DO
-        
+                        hr
                         p.lead
                             | Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.
                     .col-md-5.col-md-pull-7.col-sm-5.col-sm-pull-7
@@ -235,11 +220,11 @@ html(lang='en' )
             
             .row#service-btn(style="margin-top: 50px;")
                 .col-lg-12.col-md-12.col-sm-12.text-center
-                    a.btn.btn-lg(href="/user/register") Get Started
+                    a.btn.btn-lg(href="/user/login") Get Started
             // /END THE FEATURETTES
             // FOOTER
             
-            footer.green-bg#footer
+            footer#footer
                 .container
                     p.pull-right
                         a(href='#')

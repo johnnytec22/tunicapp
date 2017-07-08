@@ -16,7 +16,7 @@ block div
                 // Latest Users
                 .panel.panel-default
                   .panel-heading.main-color-bg
-                    h3.panel-title Latest Technicians
+                    h3.panel-title Technicians
                   .panel-body
                     form(method="POST", action="/tekers/find")
                       .input-group
@@ -34,7 +34,7 @@ block div
                           each teker in data.tekers
 
                             tr
-                                td.text-center= teker.firstname+' '+teker.lastname
+                                td.text-center.text-capitalize= teker.firstname+' '+teker.lastname
                                 td.text-center= teker.email
                                 td.text-center= teker.phone
                                 td.text-center

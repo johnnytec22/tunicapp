@@ -21,11 +21,11 @@ block div
                     form(method="POST" action="/tekers/#{data.teker._id}/edited" encType="multipart/form-data")
                         .input-group
                             span.input-group-addon First Name
-                            input.form-control(type='text', name="firstname", value="#{data.teker.firstname}")
+                            input.form-control.text-capitalize(type='text', name="firstname", value="#{data.teker.firstname}")
                         br
                         .input-group
                             span.input-group-addon Last Name
-                            input.form-control(type='text', name="lastname", value="#{data.teker.lastname}" )
+                            input.form-control.text-capitalize(type='text', name="lastname", value="#{data.teker.lastname}" )
                         br
                         .input-group
                             span.input-group-addon Phone
@@ -37,15 +37,15 @@ block div
                         br
                         .input-group
                             span.input-group-addon Town
-                            input.form-control(type='text', name="town", value="#{data.teker.location.town}")
+                            input.form-control.text-capitalize(type='text', name="town", value="#{data.teker.location.town}")
                         br
                         .input-group
                             span.input-group-addon City
-                            input.form-control(type='text', name="city", value="#{data.teker.location.city}")
+                            input.form-control.text-capitalize(type='text', name="city", value="#{data.teker.location.city}")
                         br
                         .input-group
                             span.input-group-addon Country
-                            input.form-control(type='text', name="country", value="#{data.teker.location.country}")
+                            input.form-control.text-capitalize(type='text', name="country", value="#{data.teker.location.country}")
                         br
                         .input-group  
                             label Field

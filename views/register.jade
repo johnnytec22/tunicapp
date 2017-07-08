@@ -19,14 +19,8 @@ block body
                         li.active
                             a(href='/user/login') Login
 
-        header#header
-            .container
-                .row(style="min-height: 100px;")
-                    .col-md-12
-                        h1#register.text-center(style="font-family:Comfortaa;")
-                            | User Registeration
         section#register_header(style="font-family:Comfortaa;")
-            .row(style="margin-top: -40px")
+            .row(style="margin-top: 0px; height: 300px;")
                 .parallax
                     .container-fluid
                         h3.text-center(style="color: white; padding-top: 110px;") You are one-step away, Please register and <br/>get your work done.
@@ -45,7 +39,7 @@ block body
                                     span(aria-hidden="true") ×
                                 p.text-center= success
                     br
-                    .col-md-8.col-md-pull-2.col-sm-8.col-sm-offset-2.col-xs-12
+                    .col-md-8.col-md-offset-2.col-sm-8.col-sm-offset-2.col-xs-12
                         form( method="POST")
                             .input-group
                                 span.input-group-addon First Name

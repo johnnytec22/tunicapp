@@ -16,7 +16,7 @@ block div
                 // Latest Users
                 .panel.panel-default
                   .panel-heading.main-color-bg
-                    h3.panel-title Latest Users
+                    h3.panel-title Users
                   .panel-body
                     form(method="POST", action="/users/find")
                       .input-group
@@ -34,7 +34,7 @@ block div
                                 th
                             each user in data.users
                                 tr
-                                    td.text-center= user.firstname+' '+user.lastname
+                                    td.text-center.text-capitalize= user.firstname+' '+user.lastname
                                     td.text-center= user.email
                                     td.text-center= user.phone
                                     td.text-center= user.registered_date.toLocaleDateString()

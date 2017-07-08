@@ -9,6 +9,8 @@ route.get('/login', function(req, res) {
     res.render('login.jade');
 });
 
+
+
 //submitting login form
 route.post('/login', function(req, res) {
     var querry = {username: req.body.username};

@@ -139,7 +139,7 @@ html(lang='en')
                       th.text-center Joined Date
                     each user in data.latest_users
                       tr
-                          td.text-center= user.firstname+' '+user.lastname
+                          td.text-center.text-capitalize= user.firstname+' '+user.lastname
                           td.text-center= user.email
                           td.text-center= user.registered_date.toLocaleDateString()
 
