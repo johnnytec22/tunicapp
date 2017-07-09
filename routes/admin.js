@@ -22,7 +22,7 @@ route.post('/login', function(req, res) {
     
     Admin.findOne(querry, function(err, admin) {
         if (!admin) {
-            req.flash('error', 'Incorrect username or password');
+            req.flash('error', 'Incorrect username or password First');
             res.render('admin_pages/admin_login.jade');
         }else {
             if (req.body.password === admin.password) {
