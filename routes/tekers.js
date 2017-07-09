@@ -44,7 +44,7 @@ route.post('/add', function(req, res) {
 
 
                             var teker = {
-                                image_url: '/images/technician_pictures/'+teker_picture_data.name,
+                                image_url: 'images/technician_pictures/'+teker_picture_data.name,
                                 message: req.body.message,
                                 firstname: req.body.firstname,
                                 lastname: req.body.lastname,
