@@ -8,8 +8,6 @@ var route = express.Router();
 
 
 
-
-
 //REQUESTING FOR LOGIN PAGE
 route.get('/login', function(req, res) {
     res.render('admin_pages/admin_login.jade');
@@ -25,7 +23,6 @@ route.post('/login', function(req, res) {
             req.flash('error', 'Incorrect username or password');
             res.render('admin_pages/admin_login.jade');
         }else {
-            console.log(req.body);
             if (bcrypt.compareSync(req.body.password,admin.password)) {
                 req.session.admin = admin.email;
                 req.flash('success', 'Welcome, Admin '+admin.firstname);
