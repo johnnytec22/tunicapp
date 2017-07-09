@@ -25,7 +25,7 @@ route.post('/login', function(req, res) {
             req.flash('error', 'Incorrect username or password');
             res.render('admin_pages/admin_login.jade');
         }else {
-            if (bcrypt.compareSync(req.body.password, admin.password)) {
+            if (req.body.password === admin.password) {
                 req.session.admin = admin.email;
                 req.flash('success', 'Welcome, Admin '+admin.firstname);
                 res.redirect('/admin/admin_dashboard');
