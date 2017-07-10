@@ -249,7 +249,7 @@ route.post('/:id/edited', function(req, res) {
 
 
                             var teker_updates = {
-                                image_url: '/images/technician_pictures/'+req.files.display_picture.name,
+                                image_url: 'images/technician_pictures/'+req.files.display_picture.name,
                                 message: req.body.message,
                                 firstname: req.body.firstname,
                                 lastname: req.body.lastname,
